@@ -42,6 +42,7 @@ body {
     position: absolute;
     width: 100%;
     background-color: #fff;
+    z-index: 9999;
 }
 
 #dropdown > #dropdown-list .dropdown-item {
@@ -75,7 +76,7 @@ body {
 
 #text-view > textarea {
     width: 98%;
-    height: 60vh;
+    height: 65vh;
     align-self: center;
     border-color: #ddd;
     border-radius: 5px;
