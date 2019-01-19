@@ -1,5 +1,13 @@
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
+  const dropdownItems = document.getElementsByClassName('dropdown-item');
+
+  for (let item of dropdownItems) {
+    item.addEventListener('click', function (e) {
+      document.getElementById('type').lastElementChild.innerText = this.getAttribute('data-label');
+    });
+  }
+
   // Handles dropdown list when clicked
   document.getElementById('dropdown').addEventListener('click', () => {
     const dropdownList = document.getElementById('dropdown-list');
