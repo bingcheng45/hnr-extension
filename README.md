@@ -6,7 +6,8 @@ to scrap and mine our data.
 ## Instructions
 
 ```
-git clone 
+git clone https://github.com/bingcheng45/hnr-extension.git
+cd ./hnr-extension
 docker build -t Dockerfile .
 ```
 
