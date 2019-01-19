@@ -4,57 +4,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const dropdownItems = document.getElementsByClassName('dropdown-item');
 
+  function showView (views, viewToShow) {
+    for (let view of views) {
+      if (view.getAttribute('id') === viewToShow) {
+        view.classList.remove('hide');
+      } else {
+        view.classList.add('hide');
+      }
+    }
+  }
+
   for (let item of dropdownItems) {
     item.addEventListener('click', function (e) {
       document.getElementById('type').lastElementChild.innerText = this.getAttribute('data-label');
-
-      const views = document.getElementsByClassName('view');
-      const viewToRender = this.getAttribute('data-view');
-      
-      for (let view of views) {
-        if (view.getAttribute('id') === viewToRender) {
-          view.classList.remove('hide');
-        } else {
-          view.classList.add('hide');
-        }
-      }
+      showView(document.getElementsByClassName('view'), this.getAttribute('data-view'));
     });
   }
 
   // Handles dropdown list when clicked
   document.getElementById('dropdown').addEventListener('click', () => {
     const dropdownList = document.getElementById('dropdown-list');
+    const shade = document.getElementById('shade');
 
-    dropdownList.classList.contains('hide') ? dropdownList.classList.remove('hide') : dropdownList.classList.add('hide');;
+    if (dropdownList.classList.contains('hide')) {
+      shade.classList.remove('hide');
+      dropdownList.classList.remove('hide');
+    } else {
+      shade.classList.add('hide');
+      dropdownList.classList.add('hide');
+    }
+    // dropdownList.classList.contains('hide') ? dropdownList.classList.remove('hide') : dropdownList.classList.add('hide');;
   });
 
   // Submits textarea input to backend
   document.getElementById('generate-text-btn').addEventListener('click', async function () {
     let textInput;
+    let requestSuccess = false;
 
     try {
-      console.log('start');
       textInput = document.getElementById('text');
 
       this.setAttribute('disabled', true);
       textInput.setAttribute('disabled', true);
       this.innerHTML = 'Generating...';
-  
-      /*
-      // make async call to call server
+
+      const fd = new FormData();
+      fd.append('image', textToImage(textInput.value));
+
+      // make async call to server
       const resp = await fetch(API_URL, {
         method: 'POST',
-        cache: 'no-cache'
+        cache: 'no-cache',
+        body: fd
       });
-      */
 
+      const adversarialImage = await resp.blob();
+      alert(adversarialImage);
+
+      requestSuccess = true;
     } catch (err) {
       console.log(err);
     } finally {
       this.removeAttribute('disabled');
       textInput.removeAttribute('disabled');
       this.innerHTML = 'Generate';
+
+      if (requestSuccess) {
+        document.getElementById('dropdown').classList.add('hide');
+        showView(document.getElementsByClassName('view'), 'results-view');
+      }
     }
+  });
+
+  // Redirect user back to home page
+  document.getElementById('convert-again-btn').addEventListener('click', function () {
+    document.getElementById('dropdown').classList.remove('hide');
+    showView(document.getElementsByClassName('view'), 'text-view');
+
   });
 }, false);
 

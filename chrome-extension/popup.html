@@ -37,6 +37,9 @@
       </div>
     </div>
 
+    <!-- Shade -->
+    <div id="shade" class="hide"></div>
+
     <!-- View Switcher -->
     <div id="view-switcher">
       <!-- Text View -->
@@ -51,7 +54,28 @@
       </div>
 
       <!-- Results View -->
-      <div id="results-view" class="view hide"></div>
+      <div id="results-view" class="view hide">
+        <div id="results-content">
+          <!-- <h1>Result</h1> -->
+          <img src="https://i.kym-cdn.com/entries/icons/mobile/000/026/638/cat.jpg" />
+        </div>
+        <div id="actions">
+          <div class="action-item">
+              <i class="material-icons">save_alt</i>
+              <p>Download image</p>
+          </div>
+
+          <div class="action-item">
+              <i class="material-icons">file_copy</i>
+              <p>Copy to clipboard</p>
+          </div>
+
+          <div id="convert-again-btn" class="action-item">
+              <i class="material-icons">repeat</i>
+              <p>Convert again</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="popup.js"></script>
