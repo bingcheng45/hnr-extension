@@ -17,11 +17,6 @@
       <p>AI Blocker</p>
     </div>
 
-    <!-- Loading spinner -->
-    <div id="spinner-background">
-      <div class="loader"></div>
-    </div>
-
     <!-- Dropdown Menu -->
     <div id="dropdown">
       <div id="selected-dropdown-item">
@@ -33,10 +28,10 @@
         <i class="material-icons caret">keyboard_arrow_down</i>
       </div>
       <div id="dropdown-list" class="hide">
-        <div class="dropdown-item" id="text-option" data-label="Text">
+        <div class="dropdown-item" id="text-option" data-label="Text" data-view="text-view">
           <p>Text</p>
         </div>
-        <div class="dropdown-item" id="image-option" data-label="Image">
+        <div class="dropdown-item" id="image-option" data-label="Image" data-view="image-view">
           <p>Image</p>
         </div>
       </div>
@@ -51,7 +46,9 @@
       </div>
 
       <!-- Image View -->
-      <div id="image-view" class="view hide"></div>
+      <div id="image-view" class="view hide">
+        hello world
+      </div>
 
       <!-- Results View -->
       <div id="results-view" class="view hide"></div>

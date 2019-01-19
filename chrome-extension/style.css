@@ -59,7 +59,7 @@ body {
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .view {
@@ -101,36 +101,4 @@ body {
 
 .generate-button:hover {
     background-color: #242424;
-}
-
-#spinner-background {
-    /* background-color: rgba(0, 0, 0, 0.7); */
-    background-color: #fff;
-    position: absolute;
-    z-index: 9999999999;
-    width: 100%;
-    min-height: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
-
-.loader {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #555;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
 }
