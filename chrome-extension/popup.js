@@ -1,6 +1,6 @@
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
-  const API_URL = 'http://localhost:5000/api/attack';
+  const API_URL = 'http://localhost:3000/api/attack';
 
   const dropdownItems = document.getElementsByClassName('dropdown-item');
 
@@ -49,7 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
       this.innerHTML = 'Generating...';
 
       const fd = new FormData();
-      fd.append('image', textToImage(textInput.value));
+      const textImage = await textToImage(textInput.value);
+      fd.append('image', textImage);
+      // console.log(textToImage(textInput.value));
 
       // make async call to server
       const resp = await fetch(API_URL, {
@@ -58,8 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
         body: fd
       });
 
-      const adversarialImage = await resp.blob();
-      alert(adversarialImage);
+      if (!resp.ok) {
+        throw new Error(resp.statusText);
+      }
+
+      const data = await resp.json();
+      // document.getElementById('result-image').src = 'data:image/jpeg;base64,' + data.message.data.toString('base64');
+
+      // const adversarialImage = await resp.blob();
+      // alert(adversarialImage);
 
       requestSuccess = true;
     } catch (err) {
@@ -85,9 +94,24 @@ document.addEventListener('DOMContentLoaded', () => {
 }, false);
 
 // Convert text to image
-function textToImage (text) {
-  const ctx = document.createElement('CANVAS').getContext('2d');
-  ctx.canvas.width = ctx.measureText(text).width;
-  ctx.fillText(text, 0, 10);
-  return ctx.canvas.toDataURL();
+async function textToImage (text) {
+  try {
+    const ctx = document.createElement('CANVAS').getContext('2d');
+    ctx.canvas.width = ctx.measureText(text).width;
+    ctx.fillText(text, 0, 10);
+    return await urlToFile(ctx.canvas.toDataURL(), 'image', 'jpg');
+  } catch (err) {
+    throw err;
+  }
+}
+
+// Convert URL to image
+async function urlToFile(url, filename, mimeType){
+  try {
+    const resp = await fetch(url);
+    const buffer = await resp.arrayBuffer();
+    return new File([buffer], filename, { type: mimeType });
+  } catch (err) {
+    throw err;
+  }
 }
