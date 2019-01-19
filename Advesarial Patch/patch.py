@@ -1,7 +1,7 @@
 import numpy as np 
 import cv2
 
-def patch_attack(original_img,patch):
+def patch_attack(original_img,patch,resize=False):
 	"""
 	Patch performs an advserial patch black box attack on a neural network
 	"""
@@ -18,10 +18,9 @@ def patch_attack(original_img,patch):
 	    original_img[y1:y2, x1:x2, c] = (alpha_s * patch[:, :, c] +
 	                              alpha_l * original_img[y1:y2, x1:x2, c])
 
-	resized_image = cv2.resize(original_img, (224, 224)) 
-	x_pos = resized_image[::-1].astype(np.float32)
+	if resize != False : original_img = cv2.resize(original_img, resize) 
 
-	return x_pos
+	return original_img
 
 if __name__ == '__main__':
 	original_img = cv2.imread("gibbon.jpg")
