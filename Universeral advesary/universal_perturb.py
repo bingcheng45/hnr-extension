@@ -19,7 +19,7 @@ def rand_other(pred):
 		new_pred = random.randint(0,199)
 	return new_pred
 
-def fast_signed_gradient(x,y,e=5):
+def fast_signed_gradient(x,y,e=2):
 	outputTensor = base_model.output
 	label= tf.constant([0.0 if i!= y else 1.0 for i in range(1000)],dtype=tf.float32)
 	loss = K.categorical_crossentropy(outputTensor,label, from_logits=False)
