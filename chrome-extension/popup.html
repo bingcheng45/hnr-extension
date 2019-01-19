@@ -7,6 +7,7 @@
       rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="temp.css">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
@@ -16,10 +17,15 @@
       <p>AI Blocker</p>
     </div>
 
+    <!-- Loading spinner -->
+    <div id="spinner-background">
+      <div class="loader"></div>
+    </div>
+
     <!-- Dropdown Menu -->
     <div id="dropdown">
-      <div class="selected-dropdown-item">
-        <div class="type">
+      <div id="selected-dropdown-item">
+        <div id="type">
           <p>TYPE:</p>
           <p>Text</p>
         </div>
@@ -27,10 +33,10 @@
         <i class="material-icons caret">keyboard_arrow_down</i>
       </div>
       <div id="dropdown-list" class="hide">
-        <div class="dropdown-item">
+        <div class="dropdown-item" id="text-option" data-label="Text">
           <p>Text</p>
         </div>
-        <div class="dropdown-item">
+        <div class="dropdown-item" id="image-option" data-label="Image">
           <p>Image</p>
         </div>
       </div>
