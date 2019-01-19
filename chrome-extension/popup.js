@@ -42,21 +42,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let requestSuccess = false;
 
     try {
-      console.log('start');
       textInput = document.getElementById('text');
 
       this.setAttribute('disabled', true);
       textInput.setAttribute('disabled', true);
       this.innerHTML = 'Generating...';
-  
-      /*
-      // make async call to call server
+
+      const fd = new FormData();
+      fd.append('image', textToImage(textInput.value));
+
+      // make async call to server
       const resp = await fetch(API_URL, {
         method: 'POST',
-        cache: 'no-cache'
+        cache: 'no-cache',
+        body: fd
       });
-      */
-     requestSuccess = true;
+
+      const adversarialImage = await resp.blob();
+      alert(adversarialImage);
+
+      requestSuccess = true;
     } catch (err) {
       console.log(err);
     } finally {
