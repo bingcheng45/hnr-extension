@@ -1,16 +1,59 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      button {
-        height: 30px;
-        width: 30px;
-        outline: none;
-      }
-    </style>
-  </head>
-  <body>
-    <button id="changeColor"></button>
-    <script src="popup.js"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="temp.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <div id="header">
+      <p>AI Blocker</p>
+    </div>
+
+    <!-- Dropdown Menu -->
+    <div id="dropdown">
+      <div id="selected-dropdown-item">
+        <div id="type">
+          <p>TYPE:</p>
+          <p>Text</p>
+        </div>
+        
+        <i class="material-icons caret">keyboard_arrow_down</i>
+      </div>
+      <div id="dropdown-list" class="hide">
+        <div class="dropdown-item" id="text-option" data-label="Text" data-view="text-view">
+          <p>Text</p>
+        </div>
+        <div class="dropdown-item" id="image-option" data-label="Image" data-view="image-view">
+          <p>Image</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- View Switcher -->
+    <div id="view-switcher">
+      <!-- Text View -->
+      <div id="text-view" class="view">
+        <textarea id="text" placeholder="Enter text here"></textarea>
+        <button id="generate-text-btn" class="generate-button">Generate</button>
+      </div>
+
+      <!-- Image View -->
+      <div id="image-view" class="view hide">
+        hello world
+      </div>
+
+      <!-- Results View -->
+      <div id="results-view" class="view hide"></div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
 </html>
