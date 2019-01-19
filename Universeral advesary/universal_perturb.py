@@ -33,7 +33,7 @@ train_datagen = ImageDataGenerator(shear_range=0.2,
         horizontal_flip=True)
 
 train_generator = train_datagen.flow_from_directory(
-        '/Users/mingliangang/Downloads/tiny-imagenet-200/train',
+        '/Users/mingliangang/Desktop/images',
         target_size=(224, 224),
         batch_size=1)
 
