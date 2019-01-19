@@ -15,7 +15,7 @@ def original_img_peturb(x_org,x_pos):
 
 base_model = DenseNet201(include_top=True, weights='imagenet', input_tensor=None, input_shape=None, pooling=None, classes=1000)
 
-img_path = "gibbon.jpg"
+img_path = "images/gibbon.jpg"
 img_orginal = image.load_img(img_path)
 img = image.load_img(img_path, target_size=(224, 224))
 x_org = image.img_to_array(img_orginal)

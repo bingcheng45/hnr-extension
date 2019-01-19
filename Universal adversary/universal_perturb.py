@@ -27,13 +27,14 @@ def fast_signed_gradient(x,y,e=2):
 	sess.run(tf.initialize_all_variables())
 	return sess.run(peturb,feed_dict={base_model.input:x})
 
+
 if __name__ == '__main__':
 	train_datagen = ImageDataGenerator(shear_range=0.2,
         zoom_range=0.2,
         horizontal_flip=True)
 
 	train_generator = train_datagen.flow_from_directory(
-	    '/Users/mingliangang/Desktop/images',
+	    'images',
 	    target_size=(224, 224),
 	    batch_size=1)
 
