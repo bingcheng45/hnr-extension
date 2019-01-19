@@ -5,6 +5,14 @@ from keras.preprocessing import image
 from keras.models import Model
 from universal_perturb import rand_other,fast_signed_gradient
 
+def original_img_peturb(x_org,x_pos):
+	"""
+	When reconstructing original sized images with advserial noise included this 
+	fuction must be used. 
+	"""
+	x_pos = x_org+np.resize(x_pos,(x_org.shape[0],x_org.shape[1],3))
+	return x_pos 
+
 base_model = DenseNet201(include_top=True, weights='imagenet', input_tensor=None, input_shape=None, pooling=None, classes=1000)
 
 img_path = "gibbon.jpg"
@@ -18,15 +26,17 @@ x = preprocess_input(x)
 pred = base_model.predict(x)
 
 x_pos = fast_signed_gradient(x, rand_other(pred))
-x_pos = x_org+np.resize(x_pos,(x_org.shape[0],x_org.shape[1],3))
-plt.imshow(x_org[:,:,::-1])
-plt.show()
-plt.imshow(x_pos[:,:,::-1])
-plt.show()
-# x_pos = np.expand_dims(x_pos, axis=0)
-# x_pos = preprocess_input(x_pos)
+x_pos = x_pos + x
 
-# pred_pos = base_model.predict(x_pos)
+# x_pos = original_img_peturb(x_org,x_pos)
+# plt.imshow(x_org[:,:,::-1])
+# plt.show()
+# plt.imshow(x_pos[:,:,::-1])
+# plt.show()
+x_pos = preprocess_input(x_pos)
 
-# print("Un-poisoned image: {}".format(decode_predictions(pred, top=3)[0]))
-# print("Advserial image: {}".format(decode_predictions(pred_pos,top=3)[0]))
+pred_pos = base_model.predict(x_pos)
+
+print("Un-poisoned image: {}".format(decode_predictions(pred, top=3)[0]))
+print("Advserial image: {}".format(decode_predictions(pred_pos,top=3)[0]))
+
