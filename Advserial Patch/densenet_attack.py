@@ -16,6 +16,7 @@ x = preprocess_input(x)
 original_img = cv2.imread("gibbon.jpg")
 patch = cv2.imread("patch.png",-1)
 x_pos = patch_attack(original_img,patch,(224,224))
+x_pos = resized_image[::-1].astype(np.float32)
 x_pos = np.expand_dims(x_pos, axis=0)
 x_pos = preprocess_input(x_pos)
 

@@ -18,10 +18,9 @@ def patch_attack(original_img,patch,resize=False):
 	    original_img[y1:y2, x1:x2, c] = (alpha_s * patch[:, :, c] +
 	                              alpha_l * original_img[y1:y2, x1:x2, c])
 
-	if resize != False : resized_image = cv2.resize(original_img, resize) 
-	x_pos = resized_image[::-1].astype(np.float32)
+	if resize != False : original_img = cv2.resize(original_img, resize) 
 
-	return x_pos
+	return original_img
 
 if __name__ == '__main__':
 	original_img = cv2.imread("gibbon.jpg")
