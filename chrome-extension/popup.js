@@ -1,15 +1,23 @@
-let changeColor = document.getElementById("changeColor");
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', () => {
+  // Handles dropdown list when clicked
+  document.getElementById('dropdown').addEventListener('click', () => {
+    const dropdownList = document.getElementById('dropdown-list');
 
-chrome.storage.sync.get("color", function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute("value", data.color);
-});
-changeColor.onclick = function(element) {
-  let color = element.target.value;
-  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    chrome.tabs.executeScript(
-      //tabs[0].id,
-      { code: 'document.body.style.backgroundColor = "' + color + '";' }
-    );
+    dropdownList.classList.contains('hide') ? dropdownList.classList.remove('hide') : dropdownList.classList.add('hide');;
   });
-};
+
+  // Submits textarea input to backend
+  document.getElementById('generate-text-btn').addEventListener('click', () => {
+    const textInput = document.getElementById('text');
+
+  });
+}, false);
+
+// Convert text to image
+function textToImage (text) {
+  const ctx = document.createElement('CANVAS').getContext('2d');
+  ctx.canvas.width = ctx.measureText(text).width;
+  ctx.fillText(text, 0, 10);
+  return ctx.canvas.toDataURL();
+}
