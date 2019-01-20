@@ -1,6 +1,6 @@
 # A.I. Blocker
+* Ang Ming Liang, New Jun Jie, Chua Bing Quan, Toh Bing Cheng
 ### Applies adversarial patches and noise to reduce effectiveness of public machine learning scrapers and fight against modern invasion of data privacy.
-
 ## Problem
 If you use social media, you should know about the 10-year challenge, where people compare profile pictures from 10 years ago and now. All these data, YOUR DATA, could be mined to train facial recognition algorithms on age progression and age recognition. Think of the mass data extraction of over 70 million US Facebook users during the Cambridge Analytica scandal. This is a major concern of data privacy.
 
