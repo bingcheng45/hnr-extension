@@ -7,7 +7,6 @@
       rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="temp.css">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
@@ -41,13 +40,28 @@
     <div id="view-switcher">
       <!-- Text View -->
       <div id="text-view" class="view">
+          <canvas id='textCanvas' class="hide"></canvas>
+          <img id='image'>
+          <br>
         <textarea id="text" placeholder="Enter text here"></textarea>
         <button id="generate-text-btn" class="generate-button">Generate</button>
       </div>
 
       <!-- Image View -->
       <div id="image-view" class="view hide">
-        hello world
+        <div id="drop-area">
+          <form class="my-form">
+            <p>Drag & Drop your files or </p>
+            <label class="button" for="fileElem">
+                <i class="fa fa-cloud-download"></i>
+                <strong>Browse</strong>
+              </label>
+            <input type="file" id="fileElem" class="fileElem" accept="image/*">
+          </form>
+          <progress id="progress-bar" max=100 value=0></progress>
+          <div id="gallery"></div>
+        </div>
+          
       </div>
 
       <!-- Results View -->
@@ -55,5 +69,6 @@
     </div>
   </div>
   <script src="popup.js"></script>
+  
 </body>
 </html>

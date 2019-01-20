@@ -102,3 +102,64 @@ body {
 .generate-button:hover {
     background-color: #242424;
 }
+
+
+
+body {
+  font-family: sans-serif;
+}
+a {
+  color: #369;
+}
+.note {
+  width: 500px;
+  margin: 50px auto;
+  font-size: 1.1em;
+  color: #333;
+  text-align: justify;
+}
+#drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  width: 98%;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+#drop-area.highlight {
+  border-color: purple;
+}
+p {
+  margin-top: 0;
+}
+.my-form {
+  margin-bottom: 10px;
+}
+#gallery {
+  margin-top: 10px;
+}
+#gallery img {
+  width: 150px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.button {
+  text-align: center;
+  display: inline-block;
+  /* background: #eee; */
+  cursor: pointer;
+  border:none;
+}
+#fileElem {
+  display: none;
+}
+
+#progress-bar{
+  width: 70%;
+}
+
+strong{
+  text-decoration-line: underline;
+}
+
