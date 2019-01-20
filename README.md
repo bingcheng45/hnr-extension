@@ -1,3 +1,4 @@
+#Chrome Extention Link : https://github.com/chuabingquan/ext
 # A.I. Blocker
 * Ang Ming Liang, New Jun Jie, Chua Bing Quan, Toh Bing Cheng
 ### Applies adversarial patches and noise to reduce effectiveness of public machine learning scrapers and fight against modern invasion of data privacy.
