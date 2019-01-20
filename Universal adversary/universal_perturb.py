@@ -19,7 +19,7 @@ def rand_other(pred):
 		new_pred = random.randint(0,199)
 	return new_pred
 
-def fast_signed_gradient(x,y,e=2):
+def fast_signed_gradient(x,y,e=20):
 	outputTensor = base_model.output
 	label= tf.constant([0.0 if i!= y else 1.0 for i in range(1000)],dtype=tf.float32)
 	loss = K.categorical_crossentropy(outputTensor,label, from_logits=False)
@@ -34,7 +34,7 @@ if __name__ == '__main__':
         horizontal_flip=True)
 
 	train_generator = train_datagen.flow_from_directory(
-	    'images',
+	    '/Users/mingliangang/Desktop/images',
 	    target_size=(224, 224),
 	    batch_size=1)
 
@@ -67,10 +67,12 @@ if __name__ == '__main__':
 				# Dubious, really dubious implementation of the projection
 				# We can also use a pesudo inverse to calculate the projection
 				# Rmb linear regression
-				print(np.dot(v,v_prime))
+				print(v)
 				v = np.dot(v,v_prime)/(np.linalg.norm(v))
 				#v = np.linalg.inv(v@v.T) @ v.T@v_prime
 				if np.linalg.norm(v) > gamma: v *= gamma/np.linalg.norm(v)
+			else:
+				err+=1
 
 	with open("univseral_pertub.pkl","rb") as f:
 		pkl.dump(v,f)
