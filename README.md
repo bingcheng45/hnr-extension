@@ -20,7 +20,7 @@ git clone https://github.com/bingcheng45/hnr-extension.git
 cd ./hnr-extension
 docker build -t Dockerfile .
 ```
-## Examples
+## Results
 ![ai blocker examples](https://user-images.githubusercontent.com/27071473/51434321-0e7a9780-1c99-11e9-93ee-48b866c292d9.png)
 
 ## References
